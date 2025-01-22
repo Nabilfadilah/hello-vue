@@ -9,6 +9,7 @@ import MainButton from './components/MainButton.vue';
 import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
 import InfoButton from './components/InfoButton.vue';
+import SlotButton from './components/SlotButton.vue';
 
 const name = 'Nabil Fadilah'
 
@@ -389,6 +390,34 @@ const checkedNames = ref([])
   <input v-model.lazy="msg" />
   <input v-model.number="age" />
   <input v-model.trim="msg" />
+  <br><br>
+  <p>------------------------------</p>
+
+  <p>Slot Outlet</p>
+  <SlotButton>Ini Slot Button</SlotButton>
+  <br><br>
+
+  <SlotButton>
+    <template #header>
+      <h1>HOLLA</h1>
+      <h2>Test slot</h2>
+    </template>
+  </SlotButton>
+
+  <!-- Conditional Slot -->
+  <div class="card">
+    <div v-if="$slots.header" class="card-header">
+      <slot name="header"></slot>
+    </div>
+    
+    <div v-if="$slots.default" class="card-content">
+      <slot></slot>
+    </div>
+    
+    <div v-if="$slots.footer" class="card-footer">
+      <slot name="footer"></slot>
+    </div>
+  </div>
   <p>------------------------------</p>
 </template>
 
