@@ -7,6 +7,16 @@ import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
 
 const name = 'Nabil Fadilah'
+
+// templet syntax
+const blogPost = '<p style="color:red;">Ini adalah BlogPost</p>'
+
+// atribute bindings
+const idBlog = 'blog1'
+
+// shorthand
+const blogClass = 'text-2xl flex-col'
+
 </script>
 
 <!-- template untuk merender tag html/dalam script -->
@@ -31,6 +41,18 @@ const name = 'Nabil Fadilah'
     Hello Alam Dunia
     <!-- <TheWelcome /> -->
   </main>
+
+  <p>------------</p>
+  <!-- text Interpolation -->
+  <!-- atributte binding = idBlog -->
+  <!-- shorthand = v-bind:class -->
+  <!-- bisa langsung pakai titik dua (:) -->
+  <div :id="idBlog" v-bind:class="blogClass">
+    text interpolation : {{ blogPost }}
+  </div>
+
+  <!-- Row HTML -->
+  <div v-html="blogPost"></div>
 </template>
 
 <!-- style untuk tampilannya -->
