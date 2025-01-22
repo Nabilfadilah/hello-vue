@@ -90,6 +90,24 @@ const toggleDisable = () => {
   disabled.value = !disabled.value
 }
 //end---------------------------
+
+// Event Handling
+const count4 = ref(0); // inline handling 
+const increment3 = () => { // method handling
+  count4.value = count4.value + 1
+} 
+function say(message) { // calling method in inline handler
+  alert(message)
+}
+
+function warn(message, event) { // accessing event argument in line handler
+  // sekarang kita memiliki akses ke acara asli
+  if (event) {
+    event.preventDefault()
+  }
+  alert(message)
+}
+//end---------------------------
  
 </script>
 
@@ -176,6 +194,50 @@ const toggleDisable = () => {
   <p>class & style binding</p>
   <InfoButton />
   <InfoButton @click="toggleDisable" :disabled="disabled" />
+  <p>------------------------------</p>
+
+  <p>Event Handling</p>
+  <!-- inline handling = eventnya langsung dijalankan -->
+  <h5>inilne handling</h5>
+  <button @click="count4++">{{ count4 }}</button>
+  
+  <!-- method handling = lebih kompleks -->
+  <h5>method handling</h5>
+  <button @click="increment3">{{ count4 }}</button>
+
+  <!-- calling method in inline handler -->
+  <h5>calling method in inline</h5>
+  <button @click="say('hello')">Say hello</button>
+  <button @click="say('bye')">Say bye</button>
+
+  <!-- Accessing Event Argument in Inline Handlers -->
+  <!-- menggunakan $event special variable -->
+  <h5>Accessing Event in Inline</h5>
+  <button @click="(event) => console.log(event)" @mouseover="increment3">
+    {{ count4 }}
+  </button>
+
+  <button @click="warn('Form cannot be submitted yet.', $event)">
+    Submit
+  </button>
+
+  <!-- menggunakan inline arrow function -->
+  <button @click="(event) => warn('Form cannot be submitted yet.', event)">
+    Submit
+  </button>
+
+  <!-- key modifiers -->
+  <h5>Key Modifiers</h5>
+  <input @keyup.enter="() => console.log('test up')">
+  <input @keydown="() => console.log('test down')">
+  
+  <!-- stystem modifier keys -->
+  <!-- Alt + Enter -->
+  <input @keyup.alt.enter="clear" />
+
+  <!-- Ctrl + Click -->
+  <div @click.ctrl="doSomething">Do something</div>
+
   <p>------------------------------</p>
   
   <header>
