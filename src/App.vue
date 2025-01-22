@@ -2,7 +2,7 @@
 <script setup>
 // import CompositionComponent from './components/CompositionComponent.vue'; // register component secara Global
 // import MainButton from './components/MainButton.vue'; // register component secara Global
-import { reactive, ref, computed } from 'vue';
+import { reactive, ref, computed, provide } from 'vue';
 import HelloWorld from './components/HelloWorld.vue' 
 import HoleButton from './components/HoleButton.vue';
 import MainButton from './components/MainButton.vue';
@@ -10,6 +10,7 @@ import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
 import InfoButton from './components/InfoButton.vue';
 import SlotButton from './components/SlotButton.vue';
+import CompositionComponent from './components/CompositionComponent.vue';
 
 const name = 'Nabil Fadilah'
 
@@ -111,10 +112,20 @@ function warn(message, event) { // accessing event argument in line handler
 //end---------------------------
 
 // Form Input binding</p>
-const nama = ref('')
+const nama = ref('Nadia')
 const desc = ref('')
 const checked = ref(false)
 const checkedNames = ref([])
+//end---------------------------
+
+// Provide & Inject
+function updateName() { // untuk update name
+  nama.value = "Nadia Putri Bahtera"
+}
+
+provide('name', { 
+  nama, updateName
+});
 //end---------------------------
  
 </script>
@@ -418,6 +429,10 @@ const checkedNames = ref([])
       <slot name="footer"></slot>
     </div>
   </div>
+  <p>------------------------------</p>
+
+  <p>Provide & Inject</p>
+  <CompositionComponent />
   <p>------------------------------</p>
 </template>
 

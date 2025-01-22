@@ -7,6 +7,10 @@ import MainButton from './components/MainButton.vue';
 
 // register component secara Global -> yang sering muncull diberbagai halaman
 const app = createApp(App);
+
+// app-level provide
+app.provide('nameApp', 'Aplikasi Saya');
+
 app.component("CompositionComponent", CompositionComponent);
 app.component('MainButton', MainButton);
 app.mount('#app')
