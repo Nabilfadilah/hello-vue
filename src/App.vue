@@ -2,7 +2,7 @@
 <script setup>
 // import CompositionComponent from './components/CompositionComponent.vue'; // register component secara Global
 // import MainButton from './components/MainButton.vue'; // register component secara Global
-import { reactive, ref } from 'vue';
+import { reactive, ref, computed } from 'vue';
 import HelloWorld from './components/HelloWorld.vue' 
 import HoleButton from './components/HoleButton.vue';
 import MainButton from './components/MainButton.vue';
@@ -33,6 +33,33 @@ const increment = () => {
 const user = reactive({name: 'Fadilah', age:'23'})
 const orang = reactive(['Nmax', 49303, 'Bandung', 'Pasundan'])
 
+// computed property
+const author = reactive({
+  name: 'JK Rowling',
+  books: [
+    'Harry Poter 1',
+    'Harry Poter 2',
+  ]
+})
+
+const count3 = ref(0)
+const increment2 = () => {
+  count3.value++
+}
+
+const isPublished = () => {
+  console.log(author.books)
+  return author.books.length > 0 ? 'Published yes': 'Published no'
+}
+const isPublished2 = computed(() => {
+  console.log('test')
+  return author.books.length > 0 ? 'Published yes': 'Published no'
+})
+const addBook = () => {
+  author.books.push('Harry Sutisna 3')
+}
+// end--------------------------
+
 </script>
 
 <!-- template untuk merender tag html/dalam script -->
@@ -55,33 +82,46 @@ const orang = reactive(['Nmax', 49303, 'Bandung', 'Pasundan'])
     <h4>Univ : {{ orang[3] }}</h4>
   </div>
   <p>------------------------------</p>
-
-
+  
+  <p>compoted Property</p>
+  <div>
+    {{ author.books.length > 0 ? 'Published yes': 'Published no' }} 
+  </div>
+  <div>{{ isPublished() }}</div>
+  <div>{{ isPublished2 }}</div>
+  <button @click="increment2">{{ count3 }}</button>
+  <button @click="addBook">{{ count3 }}</button>
+  <p>------------------------------</p>
+  
   <header>
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
-
+    
     <p>Hello Ganteng</p>
     <!-- <div class="wrapper">
       <HelloWorld msg="You did it!" />
     </div> -->
   </header>
+  <p>------------------------------</p>
 
   <MainButton></MainButton>
   <p>{{ name }}</p>
   <MainButton/>
   <MainButton/>
   <MainButton v-bind:title="`test`"/>
+  <p>------------------------------</p>
 
   <OptionsComponent />
   <CompositionComponent />
+  <p>------------------------------</p>
+
 
   <main>
 
     Hello Alam Dunia
     <!-- <TheWelcome /> -->
   </main>
+  <p>------------------------------</p>
 
-  <p>------------</p>
   <!-- text Interpolation -->
   <!-- atributte binding = idBlog -->
   <!-- shorthand = v-bind:class -->
@@ -89,9 +129,11 @@ const orang = reactive(['Nmax', 49303, 'Bandung', 'Pasundan'])
   <div :id="idBlog" v-bind:class="blogClass">
     text interpolation : {{ blogPost }}
   </div>
+  <p>------------------------------</p>
 
   <!-- Row HTML -->
   <div v-html="blogPost"></div>
+  <p>------------------------------</p>
 </template>
 
 <!-- style untuk tampilannya -->
