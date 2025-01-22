@@ -239,6 +239,10 @@ function warn(message, event) { // accessing event argument in line handler
   <div @click.ctrl="doSomething">Do something</div>
 
   <p>------------------------------</p>
+
+  <p>Fallthrough Attribute</p>
+  <HoleButton class="button-saya" />
+  <p>------------------------------</p>
   
   <header>
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
