@@ -1,7 +1,9 @@
 <!-- script tempat menyimpan logic-logic/component -->
 <script setup>
+import CompositionComponent from './components/CompositionComponent.vue';
 import HelloWorld from './components/HelloWorld.vue'
 import MainButton from './components/MainButton.vue';
+import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
 
 const name = 'Nabil Fadilah'
@@ -20,6 +22,9 @@ const name = 'Nabil Fadilah'
 
   <MainButton></MainButton>
   <p>{{ name }}</p>
+
+  <OptionsComponent />
+  <CompositionComponent />
 
   <main>
 
