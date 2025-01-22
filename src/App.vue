@@ -1,8 +1,8 @@
 <!-- script tempat menyimpan logic-logic/component -->
 <script setup>
-import CompositionComponent from './components/CompositionComponent.vue';
-import HelloWorld from './components/HelloWorld.vue'
-import MainButton from './components/MainButton.vue';
+// import CompositionComponent from './components/CompositionComponent.vue'; // register component secara Global
+// import MainButton from './components/MainButton.vue'; // register component secara Global
+import HelloWorld from './components/HelloWorld.vue' 
 import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
 
