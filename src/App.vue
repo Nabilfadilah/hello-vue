@@ -59,6 +59,9 @@ const addBook = () => {
   author.books.push('Harry Sutisna 3')
 }
 // end--------------------------
+// conditional redering
+const showAuthor = ref(true) // authornya tampil jika bernilai true
+// end--------------------------
 
 </script>
 
@@ -91,6 +94,16 @@ const addBook = () => {
   <div>{{ isPublished2 }}</div>
   <button @click="increment2">{{ count3 }}</button>
   <button @click="addBook">{{ count3 }}</button>
+  <p>------------------------------</p>
+
+  <p>Conditional Rendering</p>
+  <h1 v-if="showAuthor">Name : {{ author.name }}</h1>
+  <h2>
+    {{ author.name }}
+    <span v-if="author.books.length > 1">Have more than one Book</span>
+    <span v-else-if="author.books.length === 1">Have A Book</span>
+    <span v-else>Don't Have a book</span>
+  </h2>
   <p>------------------------------</p>
   
   <header>
