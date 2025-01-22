@@ -3,6 +3,8 @@
 // import CompositionComponent from './components/CompositionComponent.vue'; // register component secara Global
 // import MainButton from './components/MainButton.vue'; // register component secara Global
 import HelloWorld from './components/HelloWorld.vue' 
+import HoleButton from './components/HoleButton.vue';
+import MainButton from './components/MainButton.vue';
 import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
 
@@ -21,6 +23,13 @@ const blogClass = 'text-2xl flex-col'
 
 <!-- template untuk merender tag html/dalam script -->
 <template>
+  <!-- menggunakn props -->
+  <p>ini adalah contoh props button</p>
+    <HoleButton v-bind:title="`test`" />
+    <HoleButton :title="`+ Add Product`" />
+  <p>------------------------------</p>
+
+
   <header>
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
 
@@ -32,6 +41,9 @@ const blogClass = 'text-2xl flex-col'
 
   <MainButton></MainButton>
   <p>{{ name }}</p>
+  <MainButton/>
+  <MainButton/>
+  <MainButton v-bind:title="`test`"/>
 
   <OptionsComponent />
   <CompositionComponent />
