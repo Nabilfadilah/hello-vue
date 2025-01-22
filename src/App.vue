@@ -108,6 +108,13 @@ function warn(message, event) { // accessing event argument in line handler
   alert(message)
 }
 //end---------------------------
+
+// Form Input binding</p>
+const nama = ref('')
+const desc = ref('')
+const checked = ref(false)
+const checkedNames = ref([])
+//end---------------------------
  
 </script>
 
@@ -284,6 +291,104 @@ function warn(message, event) { // accessing event argument in line handler
 
   <!-- Row HTML -->
   <div v-html="blogPost"></div>
+  <p>------------------------------</p>
+
+  <p>Form Input binding</p>
+  <h5>{{ nama }}</h5>
+  <!-- lebih ringkas dengan v-model -->
+  <input type="text" v-model="nama"> 
+  
+  <!-- Text -->
+  <br><br>
+  <input type="text" :value="nama" @input="(event) => (nama = event.target.value)" />
+  
+  <!-- Multiline Text -->
+  <br><br>
+  <span>Multiline message is:</span>
+  <p style="white-space: pre-line;">{{ desc }}</p>
+  <textarea v-model="desc" placeholder="add multiple lines"> </textarea>
+
+  <!-- Checkbox -->
+  <br><br>
+  <input type="checkbox" id="checkbox" v-model="checked" />
+  <label for="checkbox">{{ checked }}</label>
+
+  <br><br>
+  <div>Checked names: {{ checkedNames }}</div>
+
+  <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" />
+  <label for="jack">Jack</label>
+
+  <input type="checkbox" id="john" value="John" v-model="checkedNames" />
+  <label for="john">John</label>
+
+  <input type="checkbox" id="mike" value="Mike" v-model="checkedNames" />
+  <label for="mike">Mike</label>
+
+  <!-- Radio -->
+  <br><br>
+  <div>Picked: {{ picked }}</div>
+
+  <input type="radio" id="one" value="One" v-model="picked" />
+  <label for="one">One</label>
+
+  <input type="radio" id="two" value="Two" v-model="picked" />
+  <label for="two">Two</label>
+
+  <!-- Select -->
+  <br><br>
+  <div>Selected: {{ selected }}</div>
+
+  <select v-model="selected">
+    <option disabled value="">Please select one</option>
+    <option>A</option>
+    <option>B</option>
+    <option>C</option>
+  </select>
+
+  <!-- Value Binding -->
+  <br><br>
+  <!-- `picked` is a string "a" when checked -->
+  <input type="radio" v-model="picked" value="a" />
+
+  <!-- `toggle` is either true or false -->
+  <input type="checkbox" v-model="toggle" />
+
+  <!-- `selected` is a string "abc" when the first option is selected -->
+  <select v-model="selected">
+    <option value="abc">ABC</option>
+  </select>
+
+  <!-- Checkbox -->
+  <br><br>
+  <input
+  type="checkbox"
+  v-model="toggle"
+  true-value="yes"
+  false-value="no" />
+
+  <input
+  type="checkbox"
+  v-model="toggle"
+  :true-value="dynamicTrueValue"
+  :false-value="dynamicFalseValue" />
+
+  <!-- Radio -->
+  <br><br>
+  <input type="radio" v-model="pick" :value="first" />
+  <input type="radio" v-model="pick" :value="second" />
+
+  <!-- Select Options -->
+  <select v-model="selected">
+    <!-- inline object literal -->
+    <option :value="{ number: 123 }">123</option>
+  </select>
+
+  <!-- Modifiers -->
+  <!-- synced after "change" instead of "input" -->
+  <input v-model.lazy="msg" />
+  <input v-model.number="age" />
+  <input v-model.trim="msg" />
   <p>------------------------------</p>
 </template>
 
