@@ -1,8 +1,13 @@
+<!-- script tempat menyimpan logic-logic/component -->
 <script setup>
 import HelloWorld from './components/HelloWorld.vue'
+import MainButton from './components/MainButton.vue';
 import TheWelcome from './components/TheWelcome.vue'
+
+const name = 'Nabil Fadilah'
 </script>
 
+<!-- template untuk merender tag html/dalam script -->
 <template>
   <header>
     <!-- <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" /> -->
@@ -13,6 +18,9 @@ import TheWelcome from './components/TheWelcome.vue'
     </div> -->
   </header>
 
+  <MainButton></MainButton>
+  <p>{{ name }}</p>
+
   <main>
 
     Hello Alam Dunia
@@ -20,6 +28,7 @@ import TheWelcome from './components/TheWelcome.vue'
   </main>
 </template>
 
+<!-- style untuk tampilannya -->
 <style scoped>
 header {
   line-height: 1.5;
