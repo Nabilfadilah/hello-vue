@@ -2,6 +2,7 @@
 <script setup>
 // import CompositionComponent from './components/CompositionComponent.vue'; // register component secara Global
 // import MainButton from './components/MainButton.vue'; // register component secara Global
+import { reactive, ref } from 'vue';
 import HelloWorld from './components/HelloWorld.vue' 
 import HoleButton from './components/HoleButton.vue';
 import MainButton from './components/MainButton.vue';
@@ -19,6 +20,19 @@ const idBlog = 'blog1'
 // shorthand
 const blogClass = 'text-2xl flex-col'
 
+// reactivity fundamaental
+const count = ref(1)
+setTimeout(() => {
+  count.value++
+}, 1000);
+const increment = () => {
+  count.value++
+}
+
+// reactive()
+const user = reactive({name: 'Fadilah', age:'23'})
+const orang = reactive(['Nmax', 49303, 'Bandung', 'Pasundan'])
+
 </script>
 
 <!-- template untuk merender tag html/dalam script -->
@@ -27,6 +41,19 @@ const blogClass = 'text-2xl flex-col'
   <p>ini adalah contoh props button</p>
     <HoleButton v-bind:title="`test`" />
     <HoleButton :title="`+ Add Product`" />
+  <p>------------------------------</p>
+
+  <p>Reactivity</p>
+  <button @click="increment">{{ count }}</button>
+  <div>
+    <h1>Nama : {{ user.name }}</h1>
+    <h2>Umur : {{ user.age }}</h2>
+
+    <h4>Motor : {{ orang[0] }}</h4>
+    <h4>Kode Pos : {{ orang[1] }}</h4>
+    <h4>Alamat : {{ orang[2] }}</h4>
+    <h4>Univ : {{ orang[3] }}</h4>
+  </div>
   <p>------------------------------</p>
 
 
