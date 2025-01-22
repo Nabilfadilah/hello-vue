@@ -8,6 +8,7 @@ import HoleButton from './components/HoleButton.vue';
 import MainButton from './components/MainButton.vue';
 import OptionsComponent from './components/OptionsComponent.vue';
 import TheWelcome from './components/TheWelcome.vue'
+import InfoButton from './components/InfoButton.vue';
 
 const name = 'Nabil Fadilah'
 
@@ -83,6 +84,13 @@ const author = reactive({
 })
 // end--------------------------
 
+//class & style binding
+const disabled = ref(false);
+const toggleDisable = () => {
+  disabled.value = !disabled.value
+}
+//end---------------------------
+ 
 </script>
 
 <!-- template untuk merender tag html/dalam script -->
@@ -163,6 +171,11 @@ const author = reactive({
       <MainButton v-if="item.avgReview >3" :title="item.title" />
     </template>
   </ul>
+  <p>------------------------------</p>
+
+  <p>class & style binding</p>
+  <InfoButton />
+  <InfoButton @click="toggleDisable" :disabled="disabled" />
   <p>------------------------------</p>
   
   <header>
